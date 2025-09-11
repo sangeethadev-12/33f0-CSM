@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 15px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      padding-top: 5px;
+    }
+
+    input, select {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    .gender {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    button {
+      grid-column: span 2;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #333;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s; /* smooth effect */
+    }
+
+    button:hover {
+      background: #555;
+    }
+    @media (max-width: 600px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+      button {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="course">Course</label>
+    <select id="course" name="course" required>
+      <option value="">-- Select Course --</option>
+      <option value="web">Web Development</option>
+      <option value="data">Data Science</option>
+      <option value="ai">Artificial Intelligence</option>
+    </select>
+
+    <label>Gender</label>
+    <div class="gender">
+      <label><input type="radio" name="gender" value="male"> Male</label>
+      <label><input type="radio" name="gender" value="female"> Female</label>
+      <label><input type="radio" name="gender" value="other"> Other</label>
+    </div>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="confirm">Confirm Password</label>
+    <input type="password" id="confirm" name="confirm" required>
+
+    <button type="submit">Register</button>
+  </form>
+
+</body>
+</html>
