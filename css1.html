@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List using jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+
+    h2 {
+      color: #1a237e;
+      text-align: center;
+    }
+
+    #taskInput {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    #taskInput:focus {
+      border-color: #1a73e8;
+      box-shadow: 0 0 5px rgba(26,115,232,0.4);
+    }
+
+    #addBtn {
+      padding: 10px 15px;
+      margin-left: 5px;
+      background: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #addBtn:hover {
+      background: #0c47a1;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      padding: 12px;
+      margin: 8px 0;
+      background: #ffffff;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+    }
+
+    .done {
+      text-decoration: line-through;
+      color: gray;
+      background: #f1f1f1;
+    }
+
+    button {
+      margin-left: 10px;
+      padding: 6px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .completeBtn {
+      background: #ffca28;
+      color: #000;
+    }
+
+    .completeBtn:hover {
+      background: #ffa000;
+      color: #fff;
+    }
+
+    .deleteBtn {
+      background: #e53935;
+      color: white;
+    }
+
+    .deleteBtn:hover {
+      background: #b71c1c;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>To-Do List App (jQuery)</h2>
+
+  <div style="text-align:center;">
+    <input type="text" id="taskInput" placeholder="Enter a task">
+    <button id="addBtn">Add Task</button>
+  </div>
+
+  <ul id="taskList"></ul>
+
+  <script>
+    $(document).ready(function(){
+      // Add new task
+      $("#addBtn").click(function(){
+        let taskText = $("#taskInput").val();
+        if(taskText.trim() !== ""){
+          $("#taskList").append(
+            `<li>${taskText}
+               <span>
+                 <button class="completeBtn">Complete</button>
+                 <button class="deleteBtn">Delete</button>
+               </span>
+             </li>`
+          );
+          $("#taskInput").val(""); // clear input
+        } else {
+          alert("Please enter a task!");
+        }
+      });
+
+      // Mark as complete
+      $(document).on("click", ".completeBtn", function(){
+        $(this).closest("li").toggleClass("done");
+      });
+
+      // Delete task
+      $(document).on("click", ".deleteBtn", function(){
+        $(this).closest("li").remove();
+      });
+    });
+  </script>
+
+</body>
+</html>
+

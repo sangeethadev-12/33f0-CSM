@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task App</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200vh;
+    }
+    .container {
+      background: #6debbb;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px #b9b5b51a;
+      width: 320px;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: rgb(12, 11, 11);
+    }
+    .task {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+    .task input {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .completeBtn {
+      padding: 6px 10px;
+      background: #f042ad;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+    .completeBtn:hover {
+      background: #45a049;
+    }
+    #addTask {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: #f78ba2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #addTask:hover {
+      background: #1769aa;
+    }
+    .completed {
+      background-color: yellow !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📋 My Tasks</h2>
+
+    <div id="taskList"></div>
+
+    <button id="addTask">➕ Add Task</button>
+  </div>
+
+  <script>
+    $(document).ready(function(){
+      $("#addTask").click(function(){
+        $("#taskList").append(`
+          <div class="task">
+            <input type="text" placeholder="Enter task...">
+            <button class="completeBtn">Complete</button>
+          </div>
+        `);
+      });
+
+      // Event delegation for dynamically added buttons
+      $("#taskList").on("click", ".completeBtn", function(){
+        $(this).siblings("input").toggleClass("completed");
+      });
+    });
+  </script>
+</body>
+</html>
+
