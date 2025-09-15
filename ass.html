@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6fb;
+    }
+
+    /* Header with Flexbox */
+    header {
+      background: #2d89ef;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: #ffb900;
+    }
+
+    /* Registration Form with CSS Grid */
+    .form-container {
+      background: white;
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1rem 1.5rem;
+    }
+    .form-container label {
+      font-weight: bold;
+      align-self: center;
+    }
+    .form-container input,
+    .form-container select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+    .form-container .full-row {
+      grid-column: span 2;
+      text-align: center;
+    }
+
+    /* Button Styling */
+    button {
+      background: #2d89ef;
+      color: white;
+      border: none;
+      padding: 0.7rem 2rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #ffb900;
+    }
+
+    /* Responsive for Mobile */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav {
+        flex-direction: column;
+        margin-top: 1rem;
+      }
+      .form-container {
+        grid-template-columns: 1fr;
+      }
+      .form-container .full-row {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>MyLogo</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Registration Form -->
+  <form class="form-container">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" required>
+
+    <label for="course">Course</label>
+    <select id="course" required>
+      <option value="">--Select a course--</option>
+      <option>Web Development</option>
+      <option>Data Science</option>
+      <option>AI & ML</option>
+    </select>
+
+    <label>Gender</label>
+    <div>
+      <input type="radio" name="gender" value="male"> Male
+      <input type="radio" name="gender" value="female"> Female
+    </div>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" required>
+
+    <label for="confirm">Confirm Password</label>
+    <input type="password" id="confirm" required>
+
+    <div class="full-row">
+      <button type="submit">Register</button>
+    </div>
+  </form>
+</body>
+</html>
